@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@import "_variables.scss";
+@import "_mixins.scss";
+
+body {
+  background-color: $lightColor;
+  font-family: helvetica, sans-serif;
+}
+
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  box-shadow: 0 0 15px $grayColor;
+  @media screen and (max-width: map-get($breakpoints, large)) {
+    width: 80%;
+  }
+  @media screen and (max-width: map-get($breakpoints, md-large)) {
+    flex-direction: column;
+  }
+  @media screen and (max-width: map-get($breakpoints, medium)) {
+    width: 100%;
+  }
+
+  .content-div {
+    @include div-position;
+
+    @media screen and (max-width: map-get($breakpoints, medium)) {
+      width: 80%;
+      margin: 40 auto;
+    }
+  }
+  .sidebar-div {
+    @include sidebar-div-position;
+  }
+  .title {
+    @include h2;
+  }
+  .sidebar {
+    flex-basis: 33%;
+    background-color: $darkColor;
+    color: white;
+    @media screen and (max-width: map-get($breakpoints, md-large)) {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      position: relative;
+      padding-right: 10%;
+      text-align: center;
+    }
+    @media screen and (max-width: map-get($breakpoints, medium)) {
+      position: static;
+      align-items: center;
+    }
+
+    .sidebar__image {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      @media screen and (max-width: map-get($breakpoints, md-large)) {
+        width: 300px;
+        position: absolute;
+        left: 5%;
+      }
+      @media screen and (max-width: map-get($breakpoints, medium)) {
+        position: static;
+      }
+      @media screen and (max-width: map-get($breakpoints, small)) {
+        width: 80%;
+        align-items: center;
+      }
+
+      .sidebar__image-img {
+        width: 80%;
+      }
+    }
+
+    .sidebar__contacts-list-element-link {
+      color: $lightColor;
+    }
+  }
+  @include sidebar-lists;
+
+  .content {
+    flex-basis: 66%;
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: map-get($breakpoints, md-large)) {
+      align-items: center;
+      text-align: center;
+    }
+
+    .content__about {
+      margin-top: 80px;
+      .content__about-name {
+        font-size: 40px;
+      }
+      .content__about-text {
+        margin-top: 20px;
+        color: $grayColor;
+        line-height: 125%;
+      }
+    }
+
+    .content__projects-list {
+      margin-left: 20px;
+      color: $grayColor;
+    }
+    .content__projects-list-element {
+      text-indent: 10px;
+      line-height: 150%;
+      @media screen and (max-width: map-get($breakpoints, md-large)) {
+        margin-bottom: 20px;
+      }
+    }
+    .content__work-exp__aksa-title {
+      margin-bottom: 10px;
+      .content__work-exp__aksa-link {
+        color: $darkColor;
+      }
+    }
+    .content__work-exp__aksa-info {
+      @include exp-info;
+    }
+
+    .content__education {
+      margin-bottom: 160px;
+      .content__education__school-title {
+        margin-bottom: 10px;
+        .content__education__school-link {
+          color: $darkColor;
+        }
+      }
+      .content__education__school-info {
+        @include exp-info;
+      }
+    }
+    .data-processing {
+      width: 80%;
+      margin: 180px auto 20px;
+      .rodo {
+        color: $grayColor;
+        font-size: 12px;
+        line-height: 120%;
+      }
+    }
+  }
+}
